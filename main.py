@@ -28,7 +28,7 @@ if __name__ == "__main__":
 
         all_sprites.update()
 
-        screen.fill((0, 0, 0))
+        screen.fill((255, 255, 255))
         all_sprites.draw(screen)
 
         pygame.display.flip()
