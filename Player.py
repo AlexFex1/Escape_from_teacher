@@ -15,6 +15,9 @@ class Player(pygame.sprite.Sprite):
         self.rect.bottom = HEIGHT - 10
         self.speedx = 0
 
+        self.isJump = False
+        self.jumpCount = 10
+
     
     def update(self):
         self.speedx = 0
@@ -28,3 +31,16 @@ class Player(pygame.sprite.Sprite):
             self.rect.right = WIDTH
         if self.rect.left < 0:
             self.rect.left = 0
+        if keystate[pygame.K_SPACE]:
+            self.isJump = True
+
+        if self.isJump is True:
+            if self.jumpCount >= -10:
+                if self.jumpCount < 0:
+                    self.rect.y += (self.jumpCount ** 2) // 2
+                else:
+                    self.rect.y -= (self.jumpCount ** 2) // 2
+                self.jumpCount -= 1
+            else:
+                self.isJump = False
+                self.jumpCount = 10
