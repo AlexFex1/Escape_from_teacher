@@ -12,11 +12,11 @@ class Player(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
 
         self.rect.centerx = WIDTH / 2
-        self.rect.bottom = HEIGHT - 10
+        self.rect.bottom = HEIGHT - 25
         self.speedx = 0
 
         self.isJump = False
-        self.jumpCount = 10
+        self.jumpCount = 8
 
     
     def update(self):
@@ -35,12 +35,12 @@ class Player(pygame.sprite.Sprite):
             self.isJump = True
 
         if self.isJump is True:
-            if self.jumpCount >= -10:
+            if self.jumpCount >= -8:
                 if self.jumpCount < 0:
                     self.rect.y += (self.jumpCount ** 2) // 2
                 else:
                     self.rect.y -= (self.jumpCount ** 2) // 2
-                self.jumpCount -= 1
+                self.jumpCount -= 0.5
             else:
                 self.isJump = False
-                self.jumpCount = 10
+                self.jumpCount = 8
