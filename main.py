@@ -1,13 +1,14 @@
 import pygame
 # Импорт Частей игры
-from settings import WIDTH, HEIGHT, FPS
+from settings import *
 
 from Player import Player
-#from background import Background
+from background import Background
 
-from terminate import terminate
+# from terminate import terminate
 
 from start_scree_window import start_screen
+from pause import Pause
 
 
 if __name__ == "__main__":
@@ -22,11 +23,13 @@ if __name__ == "__main__":
     all_sprites = pygame.sprite.Group()
 
     player = Player()
-    #background = Background()
+    background = Background()
     
+    # all_sprites.add(background)
     all_sprites.add(player)
+    
 
-    background_image = pygame.image.load("image/first_level.png")
+    # background_image = pygame.image.load("image/first_level.png")
 
     start_screen()
 
@@ -36,13 +39,13 @@ if __name__ == "__main__":
         clock.tick(FPS) # Контроль ФПС
 
         for event in pygame.event.get(): # Ввод событий
-            if event.type == pygame.QUIT: # Выключение
-                terminate()
+            if event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE: # Выключение
+                Pause()
 
         all_sprites.update()
 
-        screen.fill((255, 255, 255))
-        screen.blit(background_image, (0, 0))
+        screen.fill((26, 72, 118))
+        screen.blit(background.image, background.rect)
         all_sprites.draw(screen)
 
         pygame.display.flip()
