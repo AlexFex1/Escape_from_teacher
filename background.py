@@ -10,7 +10,7 @@ class Background(pygame.sprite.Sprite):
         self.image = background_image
         self.rect = self.image.get_rect()
 
-        self.rect.x = 100
+        self.rect.x = 0
         self.rect.y = HEIGHT // 2 - HEIGHT_LEVEL // 2
 
         self.speedx = 0
