@@ -18,13 +18,13 @@ def objects_dx():
     keystate = pygame.key.get_pressed()
     
     if keystate[pygame.K_LEFT]:
-        if player.rect.left < 50:
+        if player.rect.left < 50 and background.rect.x != 0:
             background.speedx = 8
         else:
             player.speedx = -8
 
     if keystate[pygame.K_RIGHT]:
-        if player.rect.right > WIDTH - 50:
+        if player.rect.right > WIDTH - 50 and background.rect.x != WIDTH:
             background.speedx = -8
         else:
             player.speedx = 8
