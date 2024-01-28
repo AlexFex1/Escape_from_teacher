@@ -22,7 +22,7 @@ class Player(pygame.sprite.Sprite):
     def update(self):
         self.rect.x += self.speedx
 
-        if self.isJump is True:
+        if self.isJump:
             if self.jumpCount >= -7:
                 if self.jumpCount < 0:
                     self.rect.y += (self.jumpCount ** 2) // 2
