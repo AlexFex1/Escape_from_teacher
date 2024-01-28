@@ -2,15 +2,15 @@ import pygame
 from settings import *
 
 
-class Pufik(pygame.sprite.Sprite):
+class Table(pygame.sprite.Sprite):
     def __init__(self, x: int):
         pygame.sprite.Sprite.__init__(self)
 
-        self.image = pygame.image.load("image/obstacle1.png")
+        self.image = pygame.image.load("image/obstacle2.png")
         self.rect = self.image.get_rect()
 
         self.rect.x = x
-        self.rect.y = 420 + HEIGHT // 2 - HEIGHT_LEVEL // 2
+        self.rect.y = 416 + HEIGHT // 2 - HEIGHT_LEVEL // 2
 
         self.speedx = 0
 

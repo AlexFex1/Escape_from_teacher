@@ -1,10 +1,12 @@
 import pygame
-# Импорт Частей игры
+
 from settings import *
 
 from Player import Player
 from background import Background
 from pufik import Pufik
+from table import Table
+from desk import Desk
 
 # from terminate import terminate
 
@@ -61,7 +63,6 @@ if __name__ == "__main__":
     pygame.display.set_caption("Game")
 
     clock = pygame.time.Clock()
-    pufik = Pufik()
 
     all_sprites = pygame.sprite.Group()
     back_objects = pygame.sprite.Group()
@@ -69,12 +70,24 @@ if __name__ == "__main__":
 
     player = Player()
     background = Background()
-    obstacle_objects.add(pufik)
-    back_objects.add(background)
-    back_objects.add(pufik)
-    all_sprites.add(background)
-    all_sprites.add(pufik)
-    all_sprites.add(player)
+
+    pufik1 = Pufik(596)
+    pufik2 = Pufik(1980)
+    pufik3 = Pufik(3396)
+
+    table1 = Table(1284)
+    table2 = Table(2696)
+
+    desk = Desk(2568, 212)
+
+    for item in pufik1, pufik2, pufik3, table1, table2, desk:
+        obstacle_objects.add(item)
+
+    for item in background, pufik1, pufik2, pufik3, table1, table2, desk:
+        back_objects.add(item)
+
+    for item in background, pufik1, pufik2, pufik3, table1, table2, desk, player:
+        all_sprites.add(item)
     
 
     # background_image = pygame.image.load("image/first_level.png")
@@ -82,7 +95,7 @@ if __name__ == "__main__":
     start_screen()  # начальное окно
 
     # Цикл игры
-    # running = True
+    # так как в игре используется пауза, то переменной для закрытия и выключения while не нада
     while True:
         clock.tick(FPS) # Контроль ФПС
 
