@@ -20,4 +20,4 @@ class Desk(pygame.sprite.Sprite):
         keystate = pygame.key.get_pressed()
 
         if keystate[pygame.K_f]:
-            self.image = pygame.image.load("image/dask_e.png")
+            self.image = pygame.image.load("image/dask_f.png")

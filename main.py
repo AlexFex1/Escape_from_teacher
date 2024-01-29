@@ -27,9 +27,9 @@ def objects_dx():
 
     keystate = pygame.key.get_pressed()
     
-    if keystate[pygame.K_LEFT]:
+    if keystate[pygame.K_LEFT] and player.rect.left != 20 and not pygame.sprite.collide_mask(player, pufik1) and not pygame.sprite.collide_mask(player, pufik2) and not pygame.sprite.collide_mask(player, pufik3) and not pygame.sprite.collide_mask(player, table1) and not pygame.sprite.collide_mask(player, table2):
         #print('left')
-        if player.rect.left < 20:
+        if player.rect.left < 500 and background.rect.left != 0:
             if background.rect.left > -8:
                 move_back_objects(-background.rect.left)
             else:
@@ -39,15 +39,16 @@ def objects_dx():
             player.speedx = -8
             #print('pl')
 
-    if keystate[pygame.K_RIGHT]:
+    if keystate[pygame.K_RIGHT] and not pygame.sprite.collide_mask(player, pufik1) and not pygame.sprite.collide_mask(player, pufik2) and not pygame.sprite.collide_mask(player, pufik3) and not pygame.sprite.collide_mask(player, table1) and not pygame.sprite.collide_mask(player, table2):
         #print('right')
-        if player.rect.right > WIDTH - 20:
+        if player.rect.right > WIDTH - 500 and background.rect.right > WIDTH + 8:
             if background.rect.right < WIDTH + 8:
                 move_back_objects(WIDTH - background.rect.right)
             else:
                 move_back_objects(-8)
             #print('back')
         else:
+
             player.speedx = 8
             #print('pl')
 
@@ -80,7 +81,7 @@ if __name__ == "__main__":
 
     desk = Desk(2568, 212)
 
-    for item in pufik1, pufik2, pufik3, table1, table2, desk:
+    for item in pufik1, pufik2, pufik3, table1, table2:
         obstacle_objects.add(item)
 
     for item in background, pufik1, pufik2, pufik3, table1, table2, desk:
@@ -92,7 +93,7 @@ if __name__ == "__main__":
 
     # background_image = pygame.image.load("image/first_level.png")
 
-    start_screen()  # начальное окно
+    start_screen(screen)  # начальное окно
 
     # Цикл игры
     # так как в игре используется пауза, то переменной для закрытия и выключения while не нада

@@ -11,7 +11,9 @@ class Player(pygame.sprite.Sprite):
         self.image = player_image
         self.rect = self.image.get_rect()
 
-        self.rect.centerx = WIDTH // 2
+        self.mask = pygame.mask.from_surface(self.image)
+
+        self.rect.centerx = 100
         self.rect.bottom = HEIGHT // 2 + HEIGHT_LEVEL // 2 - 26
         self.speedx = 0
 

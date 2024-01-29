@@ -9,6 +9,8 @@ class Table(pygame.sprite.Sprite):
         self.image = pygame.image.load("image/obstacle2.png")
         self.rect = self.image.get_rect()
 
+        self.mask = pygame.mask.from_surface(self.image)
+
         self.rect.x = x
         self.rect.y = 416 + HEIGHT // 2 - HEIGHT_LEVEL // 2
 
