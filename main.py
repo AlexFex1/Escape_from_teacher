@@ -26,34 +26,48 @@ def objects_dx():
     stop_back_objects()
 
     keystate = pygame.key.get_pressed()
-    
-    if keystate[pygame.K_LEFT] and player.rect.left != 20 and not pygame.sprite.collide_mask(player, pufik1) and not pygame.sprite.collide_mask(player, pufik2) and not pygame.sprite.collide_mask(player, pufik3) and not pygame.sprite.collide_mask(player, table1) and not pygame.sprite.collide_mask(player, table2):
-        #print('left')
-        if player.rect.left < 500 and background.rect.left != 0:
-            if background.rect.left > -8:
-                move_back_objects(-background.rect.left)
+    if not pygame.sprite.collide_mask(player, pufik1) and not pygame.sprite.collide_mask(player, pufik2) and not pygame.sprite.collide_mask(player, pufik3) and not pygame.sprite.collide_mask(player, table1) and not pygame.sprite.collide_mask(player, table2):
+        if keystate[pygame.K_LEFT] and player.rect.left != 20:
+            #print('left')
+            if player.rect.left < 500 and background.rect.left != 0:
+                if background.rect.left > -8:
+                    move_back_objects(-background.rect.left)
+                else:
+                    move_back_objects(8)
+                #print('back')
             else:
-                move_back_objects(8)
-            #print('back')
-        else:
-            player.speedx = -8
-            #print('pl')
+                player.speedx = -8
+                #print('pl')
 
-    if keystate[pygame.K_RIGHT] and not pygame.sprite.collide_mask(player, pufik1) and not pygame.sprite.collide_mask(player, pufik2) and not pygame.sprite.collide_mask(player, pufik3) and not pygame.sprite.collide_mask(player, table1) and not pygame.sprite.collide_mask(player, table2):
-        #print('right')
-        if player.rect.right > WIDTH - 500 and background.rect.right > WIDTH + 8:
-            if background.rect.right < WIDTH + 8:
-                move_back_objects(WIDTH - background.rect.right)
+        if keystate[pygame.K_RIGHT] and player.rect.right != WIDTH - 20:
+            #print('right')
+            if player.rect.right > WIDTH - 500 and background.rect.right > WIDTH + 8:
+                if background.rect.right < WIDTH + 8:
+                    move_back_objects(WIDTH - background.rect.right)
+                else:
+                    move_back_objects(-8)
+                #print('back')
             else:
-                move_back_objects(-8)
-            #print('back')
-        else:
 
-            player.speedx = 8
-            #print('pl')
+                player.speedx = 8
+                #print('pl')
 
-    if keystate[pygame.K_SPACE]:
-        player.isJump = True
+        if keystate[pygame.K_SPACE]:
+            player.isJump = True
+    else:
+        player.rect.centerx = 100
+        # player.rect.bottom = HEIGHT // 2 + HEIGHT_LEVEL // 2 - 26
+
+        background.rect.left = 0
+
+        pufik1.rect.x = 596
+        pufik2.rect.x = 1980
+        pufik3.rect.x = 3396
+
+        table1.rect.x = 1284
+        table2.rect.x = 2696
+
+        desk.rect.x = 2568
 
 
 if __name__ == "__main__":
